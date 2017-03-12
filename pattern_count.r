@@ -8,9 +8,9 @@ pattern_count <- function(text, pattern) {
   return(count)
 }
 
-message("Text")
-text <- scan("stdin", what="character", nlines=1)
-message("Pattern")
-pattern <- scan("stdin", what="character", nlines=1)
+# message("Text")
+# text <- scan("stdin", what="character", nlines=1)
+# message("Pattern")
+# pattern <- scan("stdin", what="character", nlines=1)
 
-print(pattern_count(text, pattern))
+# print(pattern_count(text, pattern))
