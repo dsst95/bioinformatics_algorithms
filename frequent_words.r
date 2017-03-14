@@ -1,6 +1,6 @@
 source("pattern_count.r")
 
-kmer <- function(text, k) {
+frequent_words <- function(text, k) {
   frequent_patterns <- {}
   count <- {}
   for (i in 0:(nchar(text) - k)) {
@@ -23,5 +23,5 @@ text <- scan("stdin", what="character", nlines=1)
 message("K")
 k <- scan("stdin", nlines=1)
 
-print(kmer(text, k))
+print(frequent_words(text, k))
 
