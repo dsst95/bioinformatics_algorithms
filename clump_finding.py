@@ -17,23 +17,24 @@ def clump_finding(genome, k, t, l):
     if frequency_array[i] >= t:
       clump[i] = 1
   for i in range(1, len(genome) - l):
-    first_pattern = genome[i - 1:k]
-    index = pattern_to_number(first_pattern)
+    first_pattern = genome[i - 1:i - 1 + k]
+    index = int(pattern_to_number(first_pattern)[0])
     frequency_array[index] = frequency_array[index] - 1
-    last_pattern = genome[i + l - k:k]
-    index = pattern_to_number(last_pattern)
+    last_pattern = genome[i + l - k - 1:i + l - 1]
+    index = int(pattern_to_number(last_pattern)[0])
     frequency_array[index] = frequency_array[index] + 1
-    if frequency_array[index] >= 1:
+    if frequency_array[index] >= t:
       clump[index] = 1
   for i in range(0, 4**k - 1):
     if clump[i] == 1:
-      pattern = number_to_pattern(i, k)
+      pattern = number_to_pattern(i, k)[0]
       frequent_patterns.append(pattern)
   return frequent_patterns
 
 
-#filename = raw_input("Enter a file name: ")
-f = open("clump_finding.txt", "r")#filename
-genome = f.readline()
-k, l, t = map(int, f.readline().split(" "))
-clump_finding(genome, k, t, l)
+if __name__ == "__main__":
+  filename = raw_input("Enter a file name: ")
+  f = open(filename, "r")
+  genome = f.readline()
+  k, l, t = map(int, f.readline().split(" "))
+  print " ".join(clump_finding(genome, k, t, l))
